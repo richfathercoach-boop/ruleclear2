@@ -1,54 +1,46 @@
 
 import React from 'react';
 import { Zap } from 'lucide-react';
+import { Language } from '../types';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  lang: Language;
+  t: any;
+}
+
+const Hero: React.FC<HeroProps> = ({ lang, t }) => {
   const handleInitiate = (e: React.MouseEvent) => {
     e.preventDefault();
-    // 使用 Calendly 全域 API 直接顯示彈窗
-    if ((window as any).Calendly) {
-      (window as any).Calendly.showPopupWidget('https://calendly.com/access-ruleclear/30min?hide_event_type_details=1&hide_gdpr_banner=1');
-    } else {
-      // 若腳本尚未載入，則回退至滾動跳轉
-      const portal = document.getElementById('portal');
-      portal?.scrollIntoView({ behavior: 'smooth' });
-    }
+    const portal = document.getElementById('portal');
+    portal?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative overflow-hidden bg-white pt-24 pb-20 lg:pt-32 lg:pb-40">
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-blue-50/50 blur-3xl"></div>
-        <div className="absolute bottom-[20%] left-[-5%] w-[300px] h-[300px] rounded-full bg-slate-50 blur-3xl"></div>
+    <section className="relative overflow-hidden bg-white pt-32 pb-24 lg:pt-48 lg:pb-40">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none -z-10">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-50/50 skew-x-12 transform origin-top-right"></div>
       </div>
 
       <div className="max-w-screen-xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center px-3 py-1 mb-8 rounded-full bg-blue-50 text-[#2563EB] text-sm font-semibold tracking-wide border border-blue-100 uppercase">
-          Technology Sovereignty
-        </div>
-        
-        <h1 className="text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight mb-6">
-          The <span className="text-[#2563EB]">0.1s</span> Commitment.
+        <h1 className="text-6xl lg:text-8xl font-extrabold text-[#0F172A] tracking-tighter mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          {t.headline.split('0.1s')[0]}<span className="text-[#2563EB]">0.1s</span>{t.headline.split('0.1s')[1]}
         </h1>
         
-        <h2 className="text-xl lg:text-3xl font-medium text-slate-600 mb-8">
-          定義供應鏈准入的「物理主權」。
+        <h2 className="text-2xl lg:text-3xl font-medium text-slate-500 mb-12 tracking-tight">
+          {t.sub}
         </h2>
         
-        <p className="max-w-2xl mx-auto text-lg text-slate-500 mb-12 leading-relaxed">
-          數據判定即歸零。在 2026 年全球貿易環境中，我們以 TEE 硬體架構為您消除行政摩擦，並 100% 確保製程機密不留痕。
+        <p className="max-w-3xl mx-auto text-xl text-slate-400 mb-16 leading-relaxed">
+          {t.desc}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button 
-            onClick={handleInitiate}
-            className="w-full sm:w-auto px-8 py-4 bg-[#2563EB] text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 flex items-center justify-center group"
-          >
-            Initiate Briefing | 預約 30 分鐘閃電諮詢
-            <Zap className="ml-2 w-5 h-5 group-hover:fill-current" />
-          </button>
-        </div>
+        <button 
+          onClick={handleInitiate}
+          className="px-10 py-5 bg-[#2563EB] text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 inline-flex items-center group"
+        >
+          Initiate Briefing | {lang === '繁中' ? '預約閃電諮詢' : 'Book Consultation'}
+          <Zap className="ml-3 w-5 h-5 group-hover:scale-110 transition-transform" />
+        </button>
       </div>
     </section>
   );
