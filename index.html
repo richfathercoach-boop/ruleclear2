@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RULECLEAR | The 0.1s Commitment</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Calendly widget resources -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      // 初始化右下角浮動 Badge Widget
+      if (window.Calendly) {
+        Calendly.initBadgeWidget({
+          url: 'https://calendly.com/access-ruleclear/30min?hide_event_type_details=1&hide_gdpr_banner=1',
+          text: '預約閃電諮詢',
+          color: '#2563EB', // 科技藍
+          textColor: '#ffffff',
+          branding: true
+        });
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .tracking-extra-wide {
+      letter-spacing: 0.25em;
+    }
+    /* 確保內嵌組件高度 */
+    .calendly-inline-widget {
+      min-height: 700px;
+    }
+    /* 自定義 Badge 樣式以符合科技美感 */
+    .calendly-badge-widget {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 700 !important;
+      border-radius: 14px !important;
+      box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.3) !important;
+      padding: 0 32px !important;
+      height: 56px !important;
+      line-height: 56px !important;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0"
+  }
+}
+</script>
+</head>
+<body class="bg-white text-[#0F172A] leading-relaxed">
+  <div id="root"></div>
+</body>
+</html>
